@@ -1,0 +1,349 @@
+super():
+================
+
+super Usage:
+
+1) super.<variable_name> refers to the variable of variable of parent class.
+2) super() invokes the constructor of immediate parent class.
+3) super.<method_name> refers to the method of parent class.
+
+*****************************************************************************
+
+class Parentclass
+{
+   Parentclass(){
+      System.out.println("Constructor of Superclass");
+   }
+}
+class Subclass extends Parentclass
+{
+   Subclass(){
+	/* Compile adds super() here at the first line
+	 * of this constructor implicitly
+	 */
+	System.out.println("Constructor of Subclass");
+   }
+   Subclass(int num){
+	/* Compile adds super() here at the first line
+	 * of this constructor implicitly
+	 */
+	System.out.println("Constructor with arg");
+   }
+   void display(){
+	System.out.println("Hello");
+   }
+   public static void main(String args[]){
+	// Creating object using default constructor
+	Subclass obj= new Subclass();
+	//Calling sub class method 
+       obj.display();
+       //Creating object 2 using arg constructor
+       Subclass obj2= new Subclass(10);
+       obj2.display();
+  }
+}
+Output:
+
+Constructor of Superclass
+Constructor of Subclass
+Hello
+Constructor of Superclass
+Constructor with arg
+Hello
+
+*****************************************************************************
+super.<method_name> to invoke parent class method
+
+class Parentclass
+{
+   //Overridden method
+   void display(){
+	System.out.println("Parent class method");
+   }
+}
+class Subclass extends Parentclass
+{
+   //Overriding method
+   void display(){
+	System.out.println("Child class method");
+   }
+   void printMsg(){
+	//This would call Overriding method
+	display();
+	//This would call Overridden method
+	super.display();
+   }
+   public static void main(String args[]){		
+	Subclass obj= new Subclass();
+	obj.printMsg(); 
+   }
+}
+
+===========================================================================================================
+===========================================================================================================
+===========================================================================================================
+
+final:
+============
+
+
+1) final variable:
+======================
+
+final variables are nothing but constants. We cannot change the value of a final variable once it is initialized. 
+
+final int MAX_VALUE=99;
+
+A static final variable that is not initialized during declaration can only be initialized in static block.  	
+class Example{  
+   //static blank final variable  
+   static final int ROLL_NO;
+   static{ 
+      ROLL_NO=1230;
+   }  
+   public static void main(String args[]){  
+      System.out.println(Example.ROLL_NO);  
+   }  
+
+
+2) final method:
+=======================
+
+A final method cannot be overridden. Which means even though a sub class can call the final method of parent class without any issues but it cannot override it.
+
+class XYZ{  
+   final void demo(){
+      System.out.println("XYZ Class Method");
+   }  
+}  
+	     
+class ABC extends XYZ{  
+   void demo(){
+      System.out.println("ABC Class Method");
+   }  
+	     
+   public static void main(String args[]){  
+      ABC obj= new ABC();  
+      obj.demo();  
+   }  
+}
+
+The above program would throw a compilation error, however we can use the parent class final method in sub class without any issues. 
+
+class XYZ{  
+   final void demo(){
+      System.out.println("XYZ Class Method");
+   }  
+}  
+	     
+class ABC extends XYZ{  
+   public static void main(String args[]){  
+      ABC obj= new ABC();  
+      obj.demo();  
+   }  
+}
+
+
+3) final class:
+===================
+
+We cannot extend a final class. 
+
+final class XYZ{  
+}  
+	     
+class ABC extends XYZ{  
+   void demo(){
+      System.out.println("My Method");
+   }  
+   public static void main(String args[]){  
+      ABC obj= new ABC(); 
+      obj.demo();
+   }  
+}
+Output:
+
+The type ABC cannot subclass the final class XYZ
+
+
+1) A constructor cannot be declared as final.
+2) Local final variable must be initializing during declaration.
+3) All variables declared in an interface are by default final.
+4) We cannot change the value of a final variable.
+5) A final method cannot be overridden.
+6) A final class not be inherited.
+7) If method parameters are declared final then the value of these parameters cannot be changed.
+8) It is a good practice to name final variable in all CAPS.
+9) final, finally and finalize are three different terms. finally is used in exception handling and finalize is a method that is called by JVM during garbage collection.
+
+
+
+==============================================================================================================================
+==============================================================================================================================
+==============================================================================================================================
+==============================================================================================================================
+
+
+static:
+==============
+
+
+Static Class:
+================
+
+A Class can be made static only if it is a nested Class. The nested static class can be accessed without having an object of outer class.
+Static inner class cannot access instance variable of outer class.
+
+class Example1{
+  //Static class
+  static class X{
+      static String str="Inside Class X";
+  }
+  public static void main(String args[])
+  {
+      X.str="Inside Class Example1";
+      System.out.println("String stored in str is- "+ X.str);
+  }
+}
+
+
+Static Block:
+================
+
+Static block is mostly used for changing the default values of static variables.This block gets executed when the class is loaded in the memory.
+A class can have multiple Static blocks, which will execute in the same sequence in which they have been written into the program.
+
+class Example4{
+   static int num;
+   static String mystr;
+   //First Static block
+   static{
+      System.out.println("Static Block 1");
+      num = 68;
+      mystr = "Block1";
+  } 
+  //Second static block
+  static{
+      System.out.println("Static Block 2");
+      num = 98;
+      mystr = "Block2";
+  }
+  public static void main(String args[])
+  {
+      System.out.println("Value of num="+num);
+      System.out.println("Value of mystr="+mystr);
+   }
+}
+
+
+Static Methods:
+=====================
+
+Static Methods can access class variables without using object of the class. 
+It can access non-static methods and non-static variables by using objects. 
+Static methods can be accessed directly in static and non-static methods.
+
+class Example6{
+  static int i;
+  static String s;
+  //Static method
+  static void display()
+  {
+     //Its a Static method
+     Example6 obj1=new Example6();
+     System.out.println("i:"+obj1.i);
+     System.out.println("i:"+obj1.i);
+  }
+
+  void funcn()
+  {
+      //Static method called in non-static method
+      display();
+  }
+  public static void main(String args[]) //Its a Static Method
+  {
+      //Static method called in another static method
+      display();
+   }
+}
+
+
+Static Variables:
+======================
+
+Static variables are also known as Class Variables.
+Such variables get default values based on the data type.
+Data stored in static variables is common for all the objects( or instances ) of that Class.
+Memory allocation for such variables only happens once when the class is loaded in the memory.
+These variables can be accessed in any other class using class name.
+Unlike non-static variables, such variables can be accessed directly in static and non-static methods.
+
+
+class Example8{
+   static int Var1=77; //Static integer variable
+   String Var2;//non-static string variable
+
+   public static void main(String args[])
+   {
+      Example8 ob1 = new Example8();
+      Example8 ob2 = new Example8();
+      ob1.Var1=88;
+      ob1.Var2="I'm Object1";
+      ob2.Var2="I'm Object2";
+      System.out.println("ob1 integer:"+ob1.Var1);
+      System.out.println("ob1 String:"+ob1.Var2);
+      System.out.println("ob2 integer:"+ob2.Var1);
+      System.out.println("ob2 STring:"+ob2.Var2);
+   }
+}
+
+Output:
+
+ob1 integer:88
+ob1 String:I'm Object1
+ob2 integer:88
+ob2 String:I'm Object2
+
+
+INNER CLASS:
+=================
+
+Inner class are defined inside the body of another class (known as outer class). 
+These classes can have access modifier or even can be marked as abstract and final.
+
+1) Inner class:
+=================
+
+An inner class is declared inside the curly braces of another enclosing class. 
+Inner class can access all members of the outer class including those marked private
+To instantiate an instance of inner class, there should be a live instance of outer class. 
+An inner class instance can be created only from an outer class instance. 
+
+class MyOuterClassDemo {
+   private int x= 1;
+   public void innerInstance()
+   {
+       MyInnerClassDemo inner = new MyInnerClassDemo();
+       inner. seeOuter();
+   }
+   public static void main(String args[]){
+       MyOuterClassDemo obj = new MyOuterClassDemo();
+       obj.innerInstance();
+   }
+   // inner class definition
+   class MyInnerClassDemo {
+       public void seeOuter () {
+          System.out.println("Outer Value of x is :" + x);
+       }
+   } // close inner class definition	   
+} // close Top level class definition
+
+
+
+
+
+
+
+
+
+

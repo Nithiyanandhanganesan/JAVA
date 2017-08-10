@@ -1,0 +1,57 @@
+A class that is declared using “abstract” keyword is known as abstract class. 
+It may or may not include abstract methods which means in abstract class you can have concrete methods (methods with body) 
+as well along with abstract methods ( without an implementation, without braces, and followed by a semicolon). 
+An abstract class can not be instantiated (you are not allowed to create object of Abstract class).
+
+
+// Declaration using abstract keyword
+abstract class AbstractDemo{
+   // Concrete method: body and braces
+   public void myMethod(){
+      //Statements here
+   }
+
+   // Abstract method: without body and braces 
+   abstract public void anotherMethod();
+}
+
+
+Since abstract class allows concrete methods as well, it does not provide 100% abstraction 
+You can say that it provides partial abstraction. Interfaces are used for 100% abstraction
+
+Remember two rules:
+1) If the class is having few abstract methods and few concrete methods: declare it as abstract class.
+2) If the class is having only abstract methods: declare it as interface.
+
+The class that extends the abstract class, have to implement all the abstract methods of abstract class, else they can be declared abstract in the class as well.
+
+An abstract class has no use until unless it is extended by some other class.
+If you declare an abstract method (discussed below) in a class then you must declare the class abstract as well. you can’t have abstract method in a non-abstract class. 
+If a class is not having any abstract method then also it can be marked as abstract.
+Abstract class can have non-abstract method (concrete) as well.
+
+********************************************************
+abstract class Demo1{
+   public void disp1(){
+     System.out.println("Concrete method of abstract class");
+   }
+   abstract public void disp2();
+}
+
+class Demo2 extends Demo1{
+   /* I have given the body to abstract method of Demo1 class
+   It is must if you don't declare abstract method of super class
+   compiler would throw an error*/  
+   public void disp2()
+   {
+       System.out.println("I'm overriding abstract method");
+   }
+   public static void main(String args[]){
+       Demo2 obj = new Demo2();
+       obj.disp2();
+   }
+}
+
+*******************************************************
+
+

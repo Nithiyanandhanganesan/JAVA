@@ -1,0 +1,223 @@
+Constructor is a block of code that allows you to create an object of class. 
+
+Default constructor: 
+---------------------
+If you do not define any constructor in your class, java generates one for you by default.
+if we have defined a parameterized constructor and didn’t define a no-arg constructor then while calling no-arg constructor the program would fail as 
+in this case compiler doesn’t create a no-arg constructor.
+A constructor can not be static in Java.
+
+public Demo()
+{
+}
+
+no-arg constructor::
+--------------------
+class Demo
+{
+     public Demo()
+     {
+         System.out.println("This is a default constructor");
+     }
+}
+
+Parameterized constructor: :
+-------------------------------
+
+class Demo
+{
+      public Demo(int num, String str)
+      {
+           System.out.println("This is a parameterized constructor");
+      }
+}
+
+
+Constructor Chaining:
+------------------------
+
+Constructor chaining is nothing but a scenario where in one constructor calls the constructor of its super class implicitly or explicitly. 
+Suppose there is a class which inherits another class, in this case if you create the object of child class then first super class(or parent class) 
+constructor will be invoked and then child class constructor will be invoked.
+
+Important points:
+====================
+
+
+Every class has a constructor whether it’s normal one or a abstract class.
+As stated above, constructor are not methods and they don’t have any return type.
+Constructor name and class name should be the same.
+Constructor can use any access specifier, they can be declared as private also. Private constructors are possible in java but there scope is within the class only.
+Like constructors method can also have name same as class name, but still they have return type, though which we can identify them that they are methods not constructors.
+If you don’t define any constructor within the class, compiler will do it for you and it will create a constructor for you.
+this() and super() should be the first statement in the constructor code. If you don’t mention them, compiler does it for you accordingly.
+Constructor overloading is possible but overriding is not possible. Which means we can have overloaded constructor in our class but we can’t override a constructor.
+Constructors can not be inherited.
+If Super class doesn’t have a no-arg(default) constructor then compiler would not define a default one in child class as it does in normal scenario.
+Interfaces do not have constructors.
+Abstract can have constructors and these will get invoked when a class, which implements interface, gets instantiated. (i.e. object creation of concrete class).
+A constructor can also invoke another constructor of the same class – By using this(). If you wanna invoke a arg-constructor then give something like: this(parameter list).
+
+Constructor Overloading:
+==============================
+
+public class StudentData
+{
+   StudentData()
+   {
+       //Default constructor
+       stuID = 100;
+       stuName = "New Student";
+       stuAge = 18;
+   }
+   StudentData(int num1, String str, int num2)
+   {
+       //Parameterized constructor
+       stuID = num1;
+       stuName = str;
+       stuAge = num2;
+   }
+}
+
+
+Role of this():
+======================
+
+public class ConstOverloading
+{
+   ConstOverloading()
+   {
+      rollNum =100;
+   }
+   ConstOverloading(int rnum)
+   {
+      this();
+      /*this() is used for calling the default constructor from parameterized constructor.
+       * It should always be the first statement in constructor body.
+       */
+      rollNum = rollNum+ rnum;
+   }
+}
+
+Role of super():
+=======================
+
+public class StaticDemo
+{
+     public StaticDemo()
+     {
+         /*Constructor of this class*/
+         System.out.println("StaticDemo");
+     }
+}
+public class StaticDemoChild extends StaticDemo
+{
+     public StaticDemoChild()
+     {
+          super();
+          System.out.println("StaticDemoChild");
+     }
+     public void display()
+     {
+          System.out.println("Just a method of child class");
+     }
+     public static void main(String args[])
+     {
+          StaticDemoChild obj = new StaticDemoChild();
+          obj.display();
+     }
+}
+
+super() is used to access methods of the base class while this() is used to access methods of the current class.
+
+Chaining Constructor:
+------------------------
+
+public class ChainingDemo {
+   //default constructor of the class
+   public ChainingDemo(){
+         System.out.println("Default constructor");
+   }
+   public ChainingDemo(String str){
+         this();
+    	 System.out.println("Parametrized constructor with single param");
+   }
+   public ChainingDemo(String str, int num){
+         //It will call the constructor with String argument
+    	 this("Hello"); 
+    	 System.out.println("Parametrized constructor with double args");
+   }
+   public ChainingDemo(int num1, int num2, int num3){
+   	// It will call the constructor with (String, integer) arguments
+        this("Hello", 2);
+        System.out.println("Parametrized constructor with three args");
+   }
+   public static void main(String args[]){
+        //Creating an object using Constructor with 3 int arguments
+        ChainingDemo obj = new ChainingDemo(5,5,15);
+   }
+}
+
+Private Constructor:
+====================
+
+The use of private constructor is to serve singleton classes. 
+A singleton class is one which limits the number of objects creation to one. 
+Using private constructor we can ensure that no more than one object can be created at a time. 
+
+For example, if you have a license for only one connection for your database or your JDBC driver has trouble with multithreading, 
+the Singleton makes sure that only one connection is made or that only one thread can access the connection at a time.
+
+public class SingleTonClass {
+   //Static Class Reference
+   private static SingleTonClass obj=null;
+
+   private SingleTonClass(){
+      /*Private Constructor will prevent 
+       * the instantiation of this class directly*/
+   }
+   public static SingleTonClass objectCreationMethod(){
+	/*This logic will ensure that no more than
+	 * one object can be created at a time */
+	if(obj==null){
+	    obj= new SingleTonClass();
+	}
+        return obj;
+   }
+   public void display(){
+	System.out.println("Singleton class Example");
+   }
+   public static void main(String args[]){
+	//Object cannot be created directly due to private constructor 
+        //This way it is forced to create object via our method where
+        //we have logic for only one object creation
+	SingleTonClass myobject= SingleTonClass.objectCreationMethod();
+	myobject.display();
+   }
+}
+
+
+Constructor in Interface?:
+==============================
+
+interface cannot have constructors.
+all the methods in interface are public abstract by default which means the method implementation cannot be provided in the interface itself. 
+It has to be provided by the implementing class.
+
+public interface SumInterface{
+
+    public int mymethod(int num1, int num2);
+}
+public class SumClass implements SumInterface{
+
+    public int mymethod(int num1, int num2){
+           int op= num1+num2;
+           return op;
+    }
+    public static void main(Sring args[])
+    {
+           SumClass obj= new SumClass();
+           System.out.println(obj.mymethod(2, 3));
+}
+
+

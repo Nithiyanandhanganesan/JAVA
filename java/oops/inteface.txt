@@ -1,0 +1,71 @@
+Interface looks like class but it is not a class. 
+An interface can have methods and variables just like the class but the methods declared in interface are by default abstract (only method signature, no body). 
+Also, the variables declared in an interface are public, static & final by default. 
+
+
+interface MyInterface
+{
+   public void method1();
+   public void method2();
+}
+
+class XYZ implements MyInterface
+{
+  public void method1()
+  {
+      System.out.println("implementation of method1");
+  }
+  public void method2()
+  {
+      System.out.println("implementation of method2");
+  }
+  public static void main(String arg[])
+  {
+      MyInterface obj = new XYZ();
+      obj. method1();
+  }
+}
+
+
+interface can not implement another interface. It has to extend the other interface if required.:
+==================================================================================================
+
+public interface Inf1{
+   public void method1();
+}
+public interface Inf2 extends Inf1 {
+   public void method2();
+}
+public class Demo implements Inf2{
+  public void method1(){
+    //Implementation of method1
+  }
+  public void method2(){
+    //Implementation of method2
+  }
+}
+
+In the program above, “Demo” class is implementing only one interface “Inf2” however it has to provide the
+ implementation of all the methods of interface “Inf1” too, because interface Inf2 extends Inf1.
+
+
+interface A
+{
+    int x=10;
+}
+interface B
+{
+    int x=100;
+}
+class Hello implements A,B
+{
+    public static void Main(String args[])
+    {
+       // reference to x is ambiguous both variables are x
+       System.out.println(x); 
+       System.out.println(A.x);
+       System.out.println(B.x);
+    }
+}
+
+

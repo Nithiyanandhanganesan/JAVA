@@ -1,0 +1,96 @@
+http://beginnersbook.com/java-tutorial-for-beginners-with-examples/
+=====================================================================
+
+Inheritance allows a class to use the properties and methods of another class. 
+
+****************************************************************************************
+class Vehicle {
+   String color;
+   void attributes() {
+      System.out.println("Color : " + color);
+   }
+}
+
+// A subclass which extends for vehicle
+class Car extends Vehicle {
+   int gears;
+   void attributescar() {
+      // The subclass refers to the members of the superclass
+      System.out.println("Color of Car : " + color);
+      System.out.println("No of gears of Car : " + gears);
+   }
+}
+public class Test {
+   public static void main(String args[]) {
+      Car b1 = new Car();
+      b1.color = "Blue";
+      b1.gears = 5;
+      b1.attributescar();
+   }
+}
+
+The derived class inherits all the members and methods that are declared as public or protected. 
+If declared as private it can not be inherited by the derived classes. 
+The private members can be accessed only in its own class.
+Private members can be accessed through getters & setters.
+****************************************************************************************
+
+Constructors and Inheritance:
+-------------------------------
+
+The constructor in the superclass is responsible for building the object of the superclass and the constructor of the subclass builds the object of subclass. 
+When the subclass constructor is called during object creation, it by default invokes the default constructor of super-class.
+
+******************************************************************************
+Inheritance and Method Overriding:
+------------------------------------
+
+class Shape {
+   private int length;
+   // default Constructor
+   Shape() {
+      length = 0;
+      breadth = 0;
+   }
+   // Parameterized Constructor
+   Shape(int len, int bdth) {
+      length = len;
+      breadth = bdth;
+   }
+   void showattributes() {
+      System.out.println("length : " + length);
+
+   } 
+}
+
+// A subclass which extends for shape
+class Rectangle extends Shape {
+   private String type;
+   Rectangle() {
+      type = null;
+   }
+   // Parameterized Constructor
+   Rectangle(String ty, int len, int bdth) {
+     super(len,bdth);
+     type = ty;
+   }
+   void showattributes() {
+      // showattributes() of class Shape is called
+      super.showattributes(); 
+      System.out.println("type : " + type);
+   }
+}
+
+public class Test {
+   public static void main(String args[]) {
+       Rectangle rect = new Rectangle("Blue",5,7);
+       // showattributes() in rectangle is called
+       rect.showattributes(); 
+   }
+}
+
+
+******************************************************************************
+
+
+

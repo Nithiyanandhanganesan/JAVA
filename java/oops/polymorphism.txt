@@ -1,0 +1,148 @@
+Polymorphism is the ability of an object to take on many forms. 
+The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
+
+Method Overloading:
+========================
+
+Method Overloading is a feature that allows a class to have two or more methods having same name, if their argument lists are different. 
+
+Argument lists could differ in –
+1. Number of parameters.
+2. Data type of parameters.
+3. Sequence of Data type of parameters.
+4. Return type should be same.
+
+
+Method overloading is also known as Static Polymorphism.
+
+Points to Note:
+1. Static Polymorphism is also known as compile time binding or early binding.
+2. Static binding happens at compile time. Method overloading is an example of static binding where binding of method call to its definition happens at Compile time.
+
+
+Overloading can take place in the same class or in its sub-class.
+Constructor in Java can be overloaded
+Overloaded methods must have a different argument list.
+Overloaded method should always be the part of the same class (can also take place in sub class), with same name but different parameters.
+The parameters may differ in their type or number, or in both.
+They may have the same or different return types.
+It is also known as compile time polymorphism.
+
+class DisplayOverloading3
+{
+   public void disp(char c, int num)
+   {
+       System.out.println("I’m the first definition of method disp");
+   }
+   public void disp(int num, char c)
+   {
+       System.out.println("I’m the second definition of method disp" );
+   }
+}
+class Sample3
+{
+   public static void main(String args[])
+   {
+       DisplayOverloading3 obj = new DisplayOverloading3();
+       obj.disp('x', 51 );
+       obj.disp(52, 'y');
+   }
+}
+
+
+Method Overriding:
+====================
+
+Child class has the same method as of base class. In such cases child class overrides the parent class method without even touching the source code of the base class. 
+This feature is known as method overriding.
+
+public class BaseClass
+{
+    public void methodToOverride() //Base class method
+    {
+         System.out.println ("I'm the method of BaseClass");
+    }
+}
+public class DerivedClass extends BaseClass
+{
+    public void methodToOverride() //Derived Class method
+    {
+         System.out.println ("I'm the method of DerivedClass");
+    }
+}
+
+public class TestMethod
+{
+     public static void main (String args []) {
+        // BaseClass reference and object
+        BaseClass obj1 = new BaseClass(); 
+        // BaseClass reference but DerivedClass object
+        BaseClass obj2 = new DerivedClass(); 
+        // Calls the method from BaseClass class
+        obj1.methodToOverride(); 
+        //Calls the method from DerivedClass class
+        obj2.methodToOverride(); 
+     }
+}
+Output:
+
+I'm the method of BaseClass
+I'm the method of DerivedClass
+
+
+Rules for Method Overriding:
+
+applies only to inherited methods
+object type (NOT reference variable type) determines which overridden method will be used at runtime
+Overriding method can have different return type (refer this)
+Overriding method must not have more restrictive access modifier
+Abstract methods must be overridden
+Static and final methods cannot be overridden
+Constructors cannot be overridden
+It is also known as Runtime polymorphism.
+
+class Vehicle {
+    public void move () {
+         System.out.println ("Vehicles are used for moving from one place to another ");
+    }
+}
+
+class Car extends Vehicle {
+    public void move () {
+      super. move (); // invokes the super class method
+      System.out.println ("Car is a good medium of transport ");
+    }
+}
+
+public class TestCar {
+    public static void main (String args []){
+        Vehicle b = new Car (); // Vehicle reference but Car object
+        b.move (); //Calls the method in Car class
+    }
+}
+Output:
+
+Vehicles are used for moving from one place to another
+Car is a good medium of transport
+
+Runtime Polymorhism( or Dynamic polymorphism):
+===================================================
+
+Method overriding is a perfect example of  runtime polymorphism. In this kind of polymorphism, reference of class X can hold object of 
+class X or an object of any sub classes of class X. For e.g. if class Y extends class X then both of the following statements are valid:
+
+Y obj = new Y();
+//Parent class reference can be assigned to child object
+X obj = new Y();
+Since in method overriding both the classes(base class and child class) have same method, compile doesn’t figure out which method to call at compile-time. 
+In this case JVM(java virtual machine) decides which method to call at runtime that’s why it is known as runtime or dynamic polymorphism.
+
+
+
+Compile time Polymorhism( or Static polymorphism):
+=======================================================
+
+Compile time polymorphism is nothing but the method overloading in java. In simple terms we can say that a class can have more than one methods
+ with same name but with different number of arguments or different types of arguments or both. 
+
+

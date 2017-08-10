@@ -1,0 +1,6 @@
+Ui -> controller -> validation(util)[data validation] -> controller
+controller -> service (interface,implementation)
+service -> dbo or dao
+dao -> service
+service ->controller 
+controller -> ui
