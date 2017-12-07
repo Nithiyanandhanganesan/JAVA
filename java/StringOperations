@@ -1,0 +1,14 @@
+StringJoiner:
+ - Simplify composing a string comprised of sequence of values.
+
+Format:
+String test = String.format("test values are %d,%d,%s",val1,val2,val3);
+
+Regular Expressions:
+a - match a letter a
+xyz = match the sequence xyz
+\w+ =match 1+ word characters (letter,digit,underscore)
+\b - match word breaks.
+
+
+str.replaceAll("ple","ricot")

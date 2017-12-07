@@ -1,0 +1,37 @@
+A Java Enum is a special Java type used to define collections of constants.
+
+public enum EnumTemplate {
+    ACTIVE("hello active"),
+    INACTIVE("hello inactive"),
+    DELETED("hello deleted");
+
+    private String url;
+
+    EnumTemplate(String url)
+    {
+    	   this.url=url;
+    }
+
+    public String url()
+    {
+    		return url;
+    }
+}
+
+
+
+
+    public static void main(String[] args) {
+
+		//ACTIVE
+        System.out.println(EnumTemplate.ACTIVE);
+        //hello active
+        System.out.println(EnumTemplate.ACTIVE.url());
+
+    }
+
+}
+
+output:
+ACTIVE
+hello active

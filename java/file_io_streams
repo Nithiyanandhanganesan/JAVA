@@ -1,0 +1,119 @@
+Stream is an ordered sequence of data.
+Streams are unidirectional;
+
+Streams are divided into two categories:
+- byte stream [binary data]
+- text stream [unicode character]
+
+Read/Input Stream:
+====================
+Base class for reading
+  - binary file is "InputStream"    |||   text file is "Reader"
+  - int read() [individual byte]    |||   int read() [individual character]
+  - int read(byte[] buff)           |||   int read(char[] buff)      [ returns no. of character/byte read]
+    read all bytes at fits in array |||   read all character at fits in array
+
+Input stream is abstract class.
+
+Eg:[ read indiviual bytes/character]
+[Binary]
+InputStream input = new FileInputStream("/u/users/ng/test.txt");
+int intVal;
+while ((intVal = input.read()) >=0)
+{
+  byte byteVal = (byte) intVal
+}
+
+[Character]
+Reader input= new Reader();
+int intVal;
+while ((intVal = input.read()) >=0)
+{
+  char charVal = (char) intVal
+}
+
+Eg: [Read array of bytes/characters]
+[Bytes]
+InputStream input = new InputStream();
+int length;
+byte[] byteBuff = new byte[10];
+while ((length = input.read(byteBuff))>=10)
+{
+   for(int i=0;i<length;i++)
+   {
+      byte byteVal = byteBuff[i]
+   }
+}
+
+
+Write/Output Stream:
+=======================
+
+Base class for reading
+  - binary file is "OutputStream"           |||   text file is "Write"
+  - void write(int b) [individual byte]     |||   int write(int ch) [individual character]
+  - void write(byte[] buff)                 |||   void write(char[] buff)      [ returns no. of character/byte read]
+  - read all bytes at fits in array         |||   read all character at fits in array
+  -                                         |||   void write(String str)
+
+
+Types of InputStream & Outputstream class:
+=============================================
+
+
+InputStream:
+  - ByteArrayInputStream [ByteArrayInputStream and ByteArrayOututStream are in-memory implementations where data in memory in a stream-like fashion, then pump it out again somewhere else.]
+  - PipedInputStream     [ used for producer/consumer mechanism. It can read from streaming written file]
+  - FileInputStream
+
+OutputStream:
+  - ByteArrayOutputStream
+  - PipedOutputStream
+  - FileOutputStream
+
+
+Types of Reader & Writer class:
+==================================
+
+Reader:
+  - CharArrayReader
+  - StringReader       [Read string in buffer]
+  - PipedReader        [ producer/consumer mechanism]
+  - InputStreamReader -> FileReader
+
+Writer:
+  - CharArrayWriter
+  - StringWriter
+  - PipedWriter
+  - InputStreamWriter -> FileWriter
+
+
+Common Errors/cleanup:
+==========================
+
+- Once the file is read/write , then the connection should be closed using close() method.
+
+
+Accessing Files:
+=================
+
+All classes for accessing files stream are present in java.io package. [deprecated now]
+FileReader
+FileWriter
+FileInputStream
+FileOutputStream
+
+We can use buffering to save memory.
+
+BufferedReader    [ had readLine() method which reads each line and buffers.]
+BufferedWriter
+BufferedInputStream
+BufferedOutputStream
+
+
+Accessing Files with java.nio.file package:
+=============================================
+It provide lot of benefits when compared to java.io package.
+FileReader,FileWriter,FileXXX got deprecated.
+Path => locate file/folder in machine.
+Path p1= Paths.get("file.txt","file1.txt")
