@@ -27,7 +27,7 @@ ArrayList<String> obj = new ArrayList<String>();
 obj.add("Ajeet");
 obj.add(0, "Rahul");
 al.addAll(al2);                #Adding ArrayList2 in ArrayList1 at 3rd position(index =2)
-al.addAll(2, al2);             
+al.addAll(2, al2);
 obj.remove("Chaitanya");
 obj.remove(4)                  # 4 is index number
 obj.set(2, "Tom");             # Used for updating an element.
@@ -47,19 +47,19 @@ ArrayList<String> obj = new ArrayList<String>(Arrays.asList("Pratap", "Peter", "
 
       /* For Loop for iterating ArrayList */
       System.out.println("For Loop");
-      for (int counter = 0; counter < arrlist.size(); counter++) { 		      
-          System.out.println(arrlist.get(counter)); 		
-      }   		
-
-      /* Advanced For Loop*/ 		
-      System.out.println("Advanced For Loop"); 		
-      for (Integer num : arrlist) { 		      
-           System.out.println(num); 		
+      for (int counter = 0; counter < arrlist.size(); counter++) {
+          System.out.println(arrlist.get(counter));
       }
 
-      /* While Loop for iterating ArrayList*/ 		
-      System.out.println("While Loop"); 		
-      int count = 0; 		
+      /* Advanced For Loop*/
+      System.out.println("Advanced For Loop");
+      for (Integer num : arrlist) {
+           System.out.println(num);
+      }
+
+      /* While Loop for iterating ArrayList*/
+      System.out.println("While Loop");
+      int count = 0;
       while (arrlist.size() > count) {
 	 System.out.println(arrlist.get(count));
          count++;
@@ -77,7 +77,7 @@ If the ArrayList is of custom object type then in such case you have two options
 LINKEDLIST:
 -------------
 
-LinkedList is an implementation of List interface. 
+LinkedList is an implementation of List interface.
 
 LinkedList<String> linkedlist = new LinkedList<String>();
 linkedlist.add("Item1");
@@ -85,24 +85,24 @@ linkedlist.addFirst("First Item");
 linkedlist.addLast("Last Item");
 linkedlist.get(0);
 linkedlist.removeFirst();
-linkedlist.removeLast();	
+linkedlist.removeLast();
 linkedlist.add(0, "Newly added item");
 linkedlist.remove(2);
 
-1) Search: ArrayList search operation is pretty fast compared to the LinkedList search operation.	
-2) Deletion: LinkedList remove operation gives O(1) performance while ArrayList gives variable performance: O(n) in worst case 
+1) Search: ArrayList search operation is pretty fast compared to the LinkedList search operation.
+2) Deletion: LinkedList remove operation gives O(1) performance while ArrayList gives variable performance: O(n) in worst case
    (while removing first element) and O(1) in best case (While removing last element).
 3) Inserts Performance: LinkedList add method gives O(1) performance while ArrayList gives O(n) in worst case.
-4) Memory Overhead: ArrayList maintains indexes and element data while LinkedList 
+4) Memory Overhead: ArrayList maintains indexes and element data while LinkedList
    maintains element data and two pointers for neighbor nodes hence the memory consumption is high in LinkedList comparatively.
 
 
 When to use LinkedList and when to use ArrayList?
 
-1) As explained above the insert and remove operations give good performance (O(1)) in LinkedList compared to ArrayList(O(n)). 
+1) As explained above the insert and remove operations give good performance (O(1)) in LinkedList compared to ArrayList(O(n)).
    Hence if there is a requirement of frequent addition and deletion in application then LinkedList is a best choice.
 
-2) Search (get method) operations are fast in Arraylist (O(1)) but not in LinkedList (O(n)) so If there are less add and remove operations 
+2) Search (get method) operations are fast in Arraylist (O(1)) but not in LinkedList (O(n)) so If there are less add and remove operations
    and more search operations requirement, ArrayList would be your best bet.
 
 
@@ -128,22 +128,22 @@ HASHSET:
 
 This class implements the Set interface, backed by a hash table.
 
-HashSet doesn’t maintain any order, the elements would be returned in any random order.
-HashSet doesn’t allow duplicates. If you try to add a duplicate element in HashSet, the old value would be overwritten.
+HashSet doesn't maintain any order, the elements would be returned in any random order.
+HashSet doesn't allow duplicates. If you try to add a duplicate element in HashSet, the old value would be overwritten.
 HashSet allows null values however if you insert more than one nulls it would still return only one null value.
 HashSet is non-synchronized.
-The iterator returned by this class is fail-fast which means iterator would throw ConcurrentModificationException if HashSet has been modified 
-after creation of iterator, by any means except iterator’s own remove method.
+The iterator returned by this class is fail-fast which means iterator would throw ConcurrentModificationException if HashSet has been modified
+after creation of iterator, by any means except iterator's own remove method.
 
 HashSet<String> hset = new HashSet<String>();
 hset.add("Apple");
 
 LINKEDHASHSET:
------------------	
+-----------------
 
 LinkedHashSet is also an implementation of Set interface, it is similar to the HashSet and TreeSet except the below mentioned differences:
 
-  - HashSet doesn’t maintain any kind of order of its elements.
+  - HashSet doesnï¿½t maintain any kind of order of its elements.
   - TreeSet sorts the elements in ascending order.
   - LinkedHashSet maintains the insertion order. Elements gets sorted in the same sequence in which they have been added to the Set.
 
@@ -152,11 +152,11 @@ LinkedHashSet<String> lhset = new LinkedHashSet<String>();
 TREESET:
 -----------
 
-TreeSet is similar to HashSet except that it sorts the elements in the ascending order while HashSet doesn’t maintain any order. 
+TreeSet is similar to HashSet except that it sorts the elements in the ascending order while HashSet doesnï¿½t maintain any order.
 
 TreeSet<String> tset = new TreeSet<String>();
 
-1) HashSet gives better performance (faster) than TreeSet for the operations like add, remove, contains, size etc. 
+1) HashSet gives better performance (faster) than TreeSet for the operations like add, remove, contains, size etc.
    HashSet offers constant time cost while TreeSet offers log(n) time cost for such operations.
 2) HashSet does not maintain any order of elements while TreeSet elements are sorted in ascending order by default.
 
@@ -168,7 +168,7 @@ TreeSet<String> tset = new TreeSet<String>();
 MAP:
 =========
 
-A Map is an object that maps keys to values. A map cannot contain duplicate keys. 
+A Map is an object that maps keys to values. A map cannot contain duplicate keys.
 There are three main implementations of Map interfaces: HashMap, TreeMap, and LinkedHashMap.
 
 HashMap: it makes no guarantees concerning the order of iteration
