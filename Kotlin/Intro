@@ -1,0 +1,295 @@
+Kotlin -> mainly used for android programming
+Kotlin works on top of JVM
+2011 - Developed by JetBrains
+Current Version - 1.1.2
+Kotlinlang.org -> official documentation
+
+-> multiplatform application which means we can create web application, enterprise application , androd application
+-> platform independent runs on any OS
+-> reduce the boilerplate code
+-> Supported tools: IntelIIJ, Android  Studio, Eclipse , Compiler
+-> interoprable [we can call kotlin from java and vice versa]
+
+Hello World:
+=============
+
+fun main(args:Array<String>){
+    println("hello world")
+}
+
+fun -> keyword denotes the function
+args -> take input for the program
+
+Operators:
+===========
+
+- var num:Int=4
+- var num2:Int=5
+- print(num+num2)
+- result = num+num2
+- print("the addition of $num and $num2 is $result")
+
+- Use curly brackets for objects eg: ${obj.variable}
+
+String Comparison:
+==================
+
+str1.equals(str2)
+str1==str2
+
+var str:String = "4"
+var num:Int = str.toInt();
+
+Null Handling:
+==============
+By default we cannot assign null value to variable
+Incase if we need null values, then we have to put "?" after datatype
+var name:String? =null
+
+If-Else:
+========
+
+if(num1 > num2)
+  print("yes")
+else
+  print("no")
+
+Assign the result to variable:
+result = if(num1 > num2)
+  num1
+else if (num1 < num2)
+  num2
+else
+  num
+
+Switch case:
+============
+
+val num:Int = 2
+
+when(num){
+  1 -> println("one")
+  2 -> println("two")
+  else -> println("three")
+}
+
+var str = when(num){
+   1 -> "one"
+   2 -> "two"
+   else -> "nothing"
+}
+
+Loops:
+==========
+
+For:
+
+var nums = 1..15    --> this is range
+var nums = 1 until 15
+for (a in nums step 3) {
+  println(a)
+}
+
+Array:
+========
+
+var num = intArrayOf(1,2,4,5)
+
+var num = IntArray[4]
+var num = arrayOfNulls<String>(5)
+
+num[1] = 10
+num.set(10)
+for (i in num)
+println(num)
+println(num[3])
+println(num.get(4))
+
+
+
+List & Map:
+============
+
+var nums = listOf<Int>(1,2,3,4)
+nums.get(0)
+
+for (i in nums){ println(i)}
+for ((i,e) in nums.withIndex()) { println(" $i: $e")}
+
+
+var nums = TreeMap<String,Int>()
+nums["test"]=1
+nums["test1"]=3
+
+for((name,age) in nums){ println("$name:$age")}
+
+
+Functions and Expressions:
+===========================
+
+fun add(a:Int,b:Int):Int {
+ println(a+b)
+ return a+b
+}
+
+
+Try Catch:
+==========
+
+var str:String = "4a"
+var num:Int = 0
+try {
+ num = str.toInt()
+} catch(e:NumberFormatExpection){
+   println("enter correct number")
+} finally {
+
+}
+
+
+Class & Objects:
+=================
+- Use var & val to create the variable.
+- var -> variable
+- val -> constant. once assigned we cannot change.
+- Eg: var name:String=""
+- Creating class
+   class FirstClass{
+     var name:String="test"
+   }
+- Creating object for the class
+   var obj = FirstClass();
+   println(obj.name)
+
+- IntelIIJ can convert the Java class to Kotlin
+- right click the java class file -> select "Convert java file to kotlin file"
+
+Constructor:
+=============
+
+--> Primary Constructor
+class Human constructor (var n : String="P"){    --> constructor keyword is optional.
+var name:String = n
+ fun think(){
+   println("constructor $name")
+ }
+}
+
+fun main(args:Array<String){
+  var obj = Human("test");
+  obj.think()
+  var obj1 = Human()  -> since we have given default value for consturctor, we can call without args.3
+  obj1.think()
+}
+
+--> Secondary Constructor
+
+class Human constructor (var n : String){
+var name:String = n
+var age:Int=0
+
+constructor(age:Int, name:String) : this(name) {       -----> secondary constructor. this is required becaz it has to call the primary constructor
+  this.age = age;
+}
+ fun think(){
+   println("constructor $name")
+ }
+}
+
+fun main(args:Array<String){
+  var obj = Human("test");
+  obj.think()
+  var obj1 = Human()  -> since we have given default value for consturctor, we can call without args.3
+  obj1.think()
+}
+
+
+Inheritance:
+==============
+-> it does not support multiple inheritance.
+-> inheritance rule will be same as java.
+-> by default all the classes are final in kotlin.
+-> "open" -> class can be inherited by another class.
+
+open class Human{
+
+  open fun think(){               --> open keyword allows function to override in sub class.
+    println("real thinking")
+  }
+
+}
+class Alien : Human(){
+   override fun think(){
+    println("virtual thinking")
+   }
+}
+fun main(args:Array<String>){
+   var name = Alien()
+   name.think()
+}
+
+Constructor in Inheritance:
+=============================
+
+open class Human{
+
+  open fun think(){
+    println("real thinking")
+  }
+
+}
+class Alien : Human(){
+   override fun think(){
+    println("virtual thinking")
+   }
+}
+fun main(args:Array<String>){
+   var name = Alien()
+   name.think()
+}
+
+
+Interface:
+=================
+
+interface A {
+ fun show()
+}
+
+interface B {
+  fun display()
+}
+
+class C : A,B{
+  override fun show(){
+  println("xxx")
+  }
+
+  override fun display(){
+   println(yyy)
+  }
+
+}
+
+fun main(args : Array<String>){
+   var obj = C();
+   obj.show()
+   obj.display()
+}
+
+
+STATIC support in Kotlin:
+==========================
+
+class A {
+
+  companion object {
+   fun show(){
+    println("hello")
+   }
+  }
+}
+
+fun main(args: Array<String>){
+   A.show()    --> directly call the method without creating the object.
+}
