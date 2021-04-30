@@ -1,0 +1,40 @@
+Types of Design Patterns:
+==========================
+
+CREATIONAL [ creation of object ]
+
+ -> Singleton
+ -> Factory
+ -> Abstract Factory
+ -> Builder
+ -> Prototype
+
+STRUCTURAL [ compose one object in another object ]
+
+ -> Adaptor
+ -> Composite
+ -> Proxyu
+ -> Fly weight
+ -> Facade
+ -> Bridge
+ -> Decorator
+
+BEHAVIOURAL [ handle two objects ]
+
+ -> Template Method
+ -> Mediator
+ -> Chain of responsibility
+ -> Observer
+ -> Stretegy
+ -> Command
+ -> State
+ -> Visitor
+ -> Interface
+ -> Interpertor
+ -> memento
+
+
+
+ Factory Design Patterns:
+ ========================
+

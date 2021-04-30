@@ -8,7 +8,7 @@ Streams are divided into two categories:
 Read/Input Stream:
 ====================
 Base class for reading
-  - binary file is "InputStream"    |||   text file is "Reader"
+  - binary file is "InputStream"    |||   text file is "FileReaderSample"
   - int read() [individual byte]    |||   int read() [individual character]
   - int read(byte[] buff)           |||   int read(char[] buff)      [ returns no. of character/byte read]
     read all bytes at fits in array |||   read all character at fits in array
@@ -25,7 +25,7 @@ while ((intVal = input.read()) >=0)
 }
 
 [Character]
-Reader input= new Reader();
+FileReaderSample input= new FileReaderSample();
 int intVal;
 while ((intVal = input.read()) >=0)
 {
@@ -72,10 +72,10 @@ OutputStream:
   - FileOutputStream
 
 
-Types of Reader & Writer class:
+Types of FileReaderSample & Writer class:
 ==================================
 
-Reader:
+FileReaderSample:
   - CharArrayReader
   - StringReader       [Read string in buffer]
   - PipedReader        [ producer/consumer mechanism]
