@@ -1,0 +1,24 @@
+:: -> Method reference & Constructor reference.
+
+
+interface interf{
+  public void m1();
+}
+
+class Test{
+   public static void m2(){
+     System.out.println("method reference");
+   }
+
+   public static void main(String args[]){
+     interf i = Test::m2
+     i.m1();
+   }
+
+}
+
+
+-> whenever m1 implemention is required, we can give m2 reference.
+-> internally it will call the m1()
+-> its used for code re-usability
+-> both method should have same argument type.

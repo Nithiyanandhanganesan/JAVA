@@ -1,0 +1,150 @@
+Important valuable topic in java 8 :
+
+ -> "Lambda".
+ -> Functional Interface
+ -> Default Method in interface (concrete method inside interface)
+ -> static method inside interface  [ possible only after 1.8 ]
+ -> Predicate [pre-defined functional interface ]
+ -> Function  [pre-defined functional interface ]
+ -> Consumer  [pre-defined functional interface ]
+ -> :: -> Method reference & constructor reference
+ -> Streams API
+ -> Date & Time API (JODA.ORG)
+
+
+ Lambda Expressions:
+ =====================
+
+ ->  to enable functional programming
+ -> readble and maintable and consice code.
+ -> use API very easily
+ -> enable paralle processing.
+
+
+Lambda Expression is knows an anonymous (nameless) function.
+   -> it will not have name
+   -> it will not have modifiers(public,private...)
+   -> it will not have return type.
+
+
+- Inside lambda expression its not possible to create instance variable. We can create only local variable.
+
+Eg:
+===
+
+public void print() { System.out.println("hello")}
+
+Equavalent lambda expression.
+  () -> {Sytem.out.println("hello")}
+If body contain only one statement curly brace is optional
+  () -> System.out.println("hello")
+
+public void add(int a, int b) { System.out.println(a+b)}
+
+Equavalent lambda expression.
+(int a, int b) -> { System.out.println(a+b)}
+Compiler will identify the input datatype of the variable(type inference)
+  (a,b) -> System.out.println(a+b)
+
+public int length(String s ) { return s.length() }
+
+Equavalent lambda expressions.
+(String s) -> { return s.length() }
+Last line of the body is return value by default.
+  (s) -> s.length()
+if input argument is only one then argument also not required
+  s -> s.length()
+
+
+Functional Interface:
+=====================
+
+To call the Lambda expression, functional interface is required.
+If interface contain only one abstract method, then its called as functional interface.
+But it can have any number of static or default method. restriction is only to abstract method.
+
+Sample functional interface:
+
+interface Inter{
+   public void m1();
+   default void m2(){
+
+   }
+   public static void m3(){
+
+   }
+}
+
+To Indicate the functional interface, new annotation introduced @FunctionalInterface
+
+
+@FunctionalInterface
+interface Inter{
+   public void m1();
+   default void m2(){
+
+   }
+   public static void m3(){
+
+   }
+}
+
+
+Functional Interface with Inheritance:
+=======================================
+
+-> While exteding functional interface, method in parent will be invoked to child. In this case child
+   interface also functional interface.
+
+@FunctionalInterface
+interface P {
+ public void m1()
+}
+
+@FunctionalInterface
+interface C extends P {
+
+}
+
+
+-> if child interface override the same method in the parent interface, then also child interface will be
+   functional interface.
+
+@FunctionalInterface
+interface P {
+ public void m1()
+}
+
+@FunctionalInterface
+interface C extends P {
+ public void m1()
+}
+
+
+Eg:
+
+@FunctionalInterface
+interface inter{
+  public void m1();
+}
+
+
+class Test {
+  public static void main(Strings args[])
+  {
+    inter i = () -> System.out.println("hello");
+    i.m1()
+  }
+}
+
+
+Anonymous Inner Class:
+========================
+
+Anonymous may be replaced by lambda expression. Both not are same but similar.
+-> Nameless inner class.
+
+Anonymous inner class can be replaced by lambda expression only if implemented interface should have
+only one abstract method.
+
+

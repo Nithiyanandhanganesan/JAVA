@@ -1,0 +1,42 @@
+Default Method inside Interface:
+==================================
+
+-> Until 1.7, every method inside interface should be abstract method.
+-> Until 1.7, every variable inside interface is public static.
+-> In 1.8 , we can declare concrete method in interface using "default" keyword.
+
+   interface inter{
+     default void m1(){
+       System.out.println("default method");
+     }
+   }
+
+-> If implementation class wants to use , it can use directly.
+-> If implementation class wants to override, it can override this method.
+
+   class Test implements inter {
+     public static void main(){
+       Test t = new Test();
+       t.m1();
+     }
+
+   }
+
+   OR
+
+   class Test implements inter {
+         public void m1(){
+           System.out.println("my own implementation")
+         }
+         public static void main(){
+          Test t = new Test();
+          t.m1()
+        }
+      }
+
+-> from 1.8, we can create static method inside interface.
+-> directly call the method using , interfacename.methodname();
+-> override concept not applicable for interface static method.
+
+
+

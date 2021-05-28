@@ -1,0 +1,11 @@
+-> java.io.Streams is totally different from 1.8 streams.
+-> If we want to read/write data in file, then java.io.Streams comes into picture.
+
+-> 1.8 streams applicable for Collection Objects.
+
+
+-> stream() method present in Collection interface.
+
+-> Stream is an interface present in java.util.stream.
+
+-> Stream s = collectionobj.stream()

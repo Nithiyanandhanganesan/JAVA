@@ -1,0 +1,56 @@
+Predefined Functional Interfaces:
+===================================
+
+To provide general utility method used widely.
+We can use those predefined functional interfaces.
+Its available in java.util.function
+
+
+- Predicate [returns boolean based on some condition]
+- Function
+- Consumer
+- Supplier
+
+
+Predicate:
+==========
+
+ -> its function interface.
+ -> it contain one abstract method "boolean test(T)"
+ -> return boolean
+
+Function:
+==========
+
+ -> function take two argument.
+ -> T : input parameter, R : Return Type
+ -> it contain one abstract method.
+ -> It can return any type.
+
+
+ interface Function<T,R>{
+     R apply(T );
+ }
+
+-> Function Chaining:
+
+f1.andThen(f2).apply("test")   -> join two function together. f1 will be applied followed by f2
+
+f1.compose(f2).apply("test")   -> f2 will be applied followed by f1.
+
+
+Consumer:
+============
+
+-> Consume the input value and do some process,
+-> do not return anything.
+-> It has one abstarct method accept(T)
+
+
+Supplier:
+===========
+
+-> No input argument but return data of any type like return date, return random nbr.
+-> get from supplier without providing any input.
+-> it has one abstract method "R get()"
+

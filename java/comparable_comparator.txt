@@ -1,4 +1,5 @@
-We generally use Collections.sort() method to sort a simple array list. However if the ArrayList is of custom object type then in such case you 
+We generally use Collections.sort() method to sort a simple array list.
+However if the ArrayList is of custom object type then in such case you
 have two options for sorting- comparable and comparator interfaces. 
 Using Comparable we can sort only a single property which should be of an integer type. 
 In order to sort the ArrayList based on multiple properties we can use Comparator.
