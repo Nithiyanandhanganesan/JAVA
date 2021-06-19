@@ -44,5 +44,13 @@ public class StreamsDemo {
         Stream<Integer> s = Stream.of(9,99,999,9999);
         s.count();
 
+        Double d = l.stream().mapToInt(x->x).average().getAsDouble();
+
+
+        String ss = "hello";
+        ss.startsWith("h");
+        ss.length();
+
+
     }
 }
