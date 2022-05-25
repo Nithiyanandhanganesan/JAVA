@@ -7,8 +7,8 @@ public class CallableDemo {
             Future<Integer> future =  service.submit(new Task());
             System.out.println("some print");
             Integer result = future.get();
-            System.out.println("result" + result);
             System.out.println("some other print");
+        System.out.println("result" + result);
         System.out.println("thread name: " + Thread.currentThread().getName());
     }
 
