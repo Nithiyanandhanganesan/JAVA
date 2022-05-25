@@ -1,0 +1,27 @@
+runnable
+callable
+executor service
+thread
+
+RunnableDemo vs Callable:
+=========================
+
+RunnableDemo tasks can be run using the Thread class or ExecutorService whereas Callables can be run
+only using the latter.
+
+The RunnableDemo interface is a functional interface and has a single run() method which doesn't accept
+any parameters and does not return any values.
+
+The Callable interface is a generic interface containing a single call() method – which returns a generic value V.
+
+
+ExecutorService:
+===================
+
+ExecutorService is a JDK API that simplifies running tasks in asynchronous mode.
+
+Thread vs RunnableDemo:
+=====================
+
+there are two ways to create threads. One using RunnableDemo interface and another by extending Thread class.
+

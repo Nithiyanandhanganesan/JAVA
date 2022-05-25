@@ -1,4 +1,4 @@
-A class that is declared using ÔabstractÕ keyword is known as abstract class. 
+A class that is declared using abstract keyword is known as abstract class.
 It may or may not include abstract methods which means in abstract class you can have concrete methods (methods with body) 
 as well along with abstract methods ( without an implementation, without braces, and followed by a semicolon). 
 An abstract class can not be instantiated (you are not allowed to create object of Abstract class).
@@ -26,7 +26,7 @@ Remember two rules:
 The class that extends the abstract class, have to implement all the abstract methods of abstract class, else they can be declared abstract in the class as well.
 
 An abstract class has no use until unless it is extended by some other class.
-If you declare an abstract method (discussed below) in a class then you must declare the class abstract as well. you canÕt have abstract method in a non-abstract class. 
+If you declare an abstract method (discussed below) in a class then you must declare the class abstract as well. you canï¿½t have abstract method in a non-abstract class. 
 If a class is not having any abstract method then also it can be marked as abstract.
 Abstract class can have non-abstract method (concrete) as well.
 

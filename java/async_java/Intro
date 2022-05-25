@@ -1,0 +1,137 @@
+Hardware -> multiple cores -> apply parallel programming -> Parallel Streams
+Software -> micro services -> asynchronous programming   -> CompletableFuture
+
+Evolution of parallelism in java:
+=======================================
+
+Java 1 -> Threads
+Java 5 -> ThreadPool, ExecutorService, Futures, ConcurrentCollections
+Java 7 -> Fork/join framework
+java 8 -> lambdas & streams api (Parallel Streams, CompletableFutures)
+Java 9 -> Flow API
+
+
+Concurrency vs Parallelism:
+=============================
+
+Concurrency
+    -> two or more task run simultaneously
+    -> achieved through Threads.
+
+Parallelism
+    -> decomposing the task into subtask, execute in sequential , joining the result of the task.
+
+
+Thread API:
+=============
+
+Runs the new task in parallel to the main task.
+
+Limitation of thread:
+  - create the thread, start the thread, join the thread.
+  - expensive becaz thread have theri own runtime-stack, memory, registers.
+
+To overcome the above problems, we have to use ThreadPool
+
+ThreadPool:
+=============
+
+- Group of thread.
+- pulls work from the queue and perform.
+- ThreadPool size = no of cores.
+- for IO task, threadPool size > no of cores.
+- No need to create, start & join the threads.
+- acheive concurrency in your application.
+
+ExecutorService:
+==================
+
+- Async task execution engine.
+- execute task and provide result in much simpler way compared to threads.
+- get() method will be the blocking call.
+- if we have multiple task running in parallel , if one task get hung then program will not run further.
+- one way to overcome this is to use timeout in the get method "get(timeout)"
+- other way is to use CompletableFuture
+
+CompletableFuture:
+===================
+
+- introduced in java8
+- async reactive functional programming api
+- exception or errro will not crash the app or code
+- no of thread can go up or down based on the need.
+- interact with each through messages in a event-driven style
+
+It has three main implementations:
+  - factory method to initite the aync computation
+  - Completion stage method to chain async computation
+  - exception method to handle exception in aync computtaion
+
+supplyAsync():
+  - factory method (initiate async computation)
+  - input is Supplier Functional Interface
+  - returns CompletableFuture<T>()
+
+
+thenAccept():
+  - Completionstage method (chain async computation)
+  - input is "Consumer" functional interface
+  - returns CompletableFuture<Void>()
+
+
+thenApply():
+  - completionstage method
+  - transform data from one form to another
+  - input is Function functional interface
+  - returns CompletableFuture<T>
+
+thenCombine():
+  - completion stage method
+  - combine independent completable futures.
+  - take 2 arg: CompletionStage, BiFunction
+
+
+thenCompose():
+ - completion stage method
+ - transform data from one form to another
+ - input is Function functional interface
+ - output CompletableFuture
+
+
+Fork/Join Framework:
+======================
+- This is an extention of ExecutorService
+- its designed to achieve Data Parallelism
+- data parallelism is a concept where give task is recurselve split into subtask unit it reached it
+  least possible size and exeucte those tasks in parallel.
+- ForkJoin Task:
+    - part of the data and its computation
+    - RecursiveTask -> returns a value
+    - RecursiveAction -> does not return a value.
+
+
+Streams API & Parallel Streams:
+=================================
+
+-> allows run code in parallel
+-> designed to solve data parallelism
+-> list.stream().map(String::toUpperCase).collect(Collectors.toList())
+-> list.parallelStream().map(String::toUpperCase).collect(Collectors.toList())
+
+sequential():
+  -> list.parallelStream().map(this::transform).sequential().collect(Collectors.toList())
+
+
+parallel():
+  -> list.stream().map(this::transform).parallel().collect(Collectors.toList())
+
+Exception Handling:
+======================
+
+- CompletableFuture API has functional style of handling exception
+- options available
+    - handle()         -> catch and recover
+    - exceptionally()  -> catch and recover
+    - whenComplete()   -> catch and throw
+
+-
