@@ -1,0 +1,58 @@
+Types of Design Patterns:
+==========================
+
+CREATIONAL [ creation of object ]
+
+ -> Singleton
+ -> Factory
+ -> Abstract Factory
+ -> Builder
+ -> Prototype
+
+STRUCTURAL [ compose one object in another object ]
+
+ -> Adaptor
+ -> Composite
+ -> Proxyu
+ -> Fly weight
+ -> Facade
+ -> Bridge
+ -> Decorator
+
+BEHAVIOURAL [ handle two objects ]
+
+ -> Template Method
+ -> Mediator
+ -> Chain of responsibility
+ -> Observer
+ -> Stretegy
+ -> Command
+ -> State
+ -> Visitor
+ -> Interface
+ -> Interpertor
+ -> memento
+
+
+
+ Factory Design Patterns:
+ ========================
+
+ - We have interface and it has multiple implementation of that interface.
+ - Get object based on what type you pass.
+
+
+ Builder Design Patterns:
+ ========================
+
+ - Lets say class have 10 variables.
+ - We can set object to those variable either by setter or by constructor.
+ - If its through constructor, then we need to pass all 10. And we need pass in right order.
+ - sometime we may not need to set all variable.
+ - In this scenario , we go for Builder pattern
+
+
+ Adapter Design Pattern:
+ =======================
+
+ - provide adapter between two different interfaces.
