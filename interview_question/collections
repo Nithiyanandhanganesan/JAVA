@@ -1,0 +1,205 @@
+http://beginnersbook.com/java-collections-tutorials/
+
+COLLECTION(Interface):
+   - SET     [ HASHSET, LINKEDHASHSET, TREESET]
+   - LIST    [ ARRAYLIST, VECTOR, LINKEDLIST]
+   - QUEUE   [ LINKEDLIST, PRIORITY QUEUE]
+   - OBJECT  [ ARRAYS, COLLECTIONS]
+   - MAP     [ HASHTABLE, LINKEDHASHMAP, HASHMAP, TREEMAP]
+
+- all collection framework inherits Collection Interface except Map Interface.
+
+(SET, LIST, QUEUE, MAP are interfaces. HASHSET, ARRAYLIST,.,etc are classes)
+
+==========================================================================================================================================================
+==========================================================================================================================================================
+
+LIST:
+=======
+
+ARRAYLIST:
+--------------
+
+ArrayList is a resizable-array implementation of the List interface. Permits all elements, including null.
+Arraylist is a class which implements List interface.
+
+ArrayList<String> obj = new ArrayList<String>();
+
+obj.add("Ajeet");
+obj.add(0, "Rahul");
+al.addAll(al2);                #Adding ArrayList2 in ArrayList1 at 3rd position(index =2)
+al.addAll(2, al2);
+obj.remove("Chaitanya");
+obj.remove(4)                  # 4 is index number
+obj.set(2, "Tom");             # Used for updating an element.
+obj.get(2);                    # returns the object of list present at that index
+obj.contains("Steve")
+obj.clear();                   #removing all the elements of the array list in one go
+Collections.sort(obj);
+Collections.sort(obj,Collections.reverseOrder());
+Collections.swap(al, 1, 4);
+List<String> list = al.subList(1, 4);
+List<String> syncal = Collections.synchronizedList(new ArrayList<String>());
+
+
+** Add new object at the end unless the index is provided.
+
+ArrayList<String> obj = new ArrayList<String>(Arrays.asList("Pratap", "Peter", "Harsh"));
+
+      /* For Loop for iterating ArrayList */
+      System.out.println("For Loop");
+      for (int counter = 0; counter < arrlist.size(); counter++) {
+          System.out.println(arrlist.get(counter));
+      }
+
+      /* Advanced For Loop*/
+      System.out.println("Advanced For Loop");
+      for (Integer num : arrlist) {
+           System.out.println(num);
+      }
+
+      /* While Loop for iterating ArrayList*/
+      System.out.println("While Loop");
+      int count = 0;
+      while (arrlist.size() > count) {
+	 System.out.println(arrlist.get(count));
+         count++;
+      }
+
+      /*Looping Array List using Iterator*/
+      System.out.println("Iterator");
+      Iterator iter = arrlist.iterator();
+      while (iter.hasNext()) {
+         System.out.println(iter.next());
+      }
+
+If the ArrayList is of custom object type then in such case you have two options for sorting- comparable and comparator interfaces.
+
+LINKEDLIST:
+-------------
+
+LinkedList is an implementation of List interface. It implements List & Deque interface.
+
+LinkedList<String> linkedlist = new LinkedList<String>();
+linkedlist.add("Item1");
+linkedlist.addFirst("First Item");
+linkedlist.addLast("Last Item");
+linkedlist.get(0);
+linkedlist.removeFirst();
+linkedlist.removeLast();
+linkedlist.add(0, "Newly added item");
+linkedlist.remove(2);
+
+1) Search: ArrayList search operation is pretty fast compared to the LinkedList search operation.
+2) Deletion: LinkedList remove operation gives O(1) performance while ArrayList gives variable performance: O(n) in worst case
+   (while removing first element) and O(1) in best case (While removing last element).
+3) Inserts Performance: LinkedList add method gives O(1) performance while ArrayList gives O(n) in worst case.
+4) Memory Overhead: ArrayList maintains indexes and element data while LinkedList
+   maintains element data and two pointers for neighbor nodes hence the memory consumption is high in LinkedList comparatively.
+
+
+When to use LinkedList and when to use ArrayList?
+
+1) As explained above the insert and remove operations give good performance (O(1)) in LinkedList compared to ArrayList(O(n)).
+   Hence if there is a requirement of frequent addition and deletion in application then LinkedList is a best choice.
+
+2) Search (get method) operations are fast in Arraylist (O(1)) but not in LinkedList (O(n)) so If there are less add and remove operations
+   and more search operations requirement, ArrayList would be your best bet.
+
+
+VECTOR:
+---------
+
+Vector is synchronized which means it is suitable for thread-safe operations but it gives poor performance when used in multi-thread environment.
+Maintain insertion order.
+
+Vector<String> vec = new Vector<String>(2);
+vec.addElement("Apple");
+
+
+==========================================================================================================================================================
+==========================================================================================================================================================
+
+SET:
+========
+
+A Set is a Collection that cannot contain duplicate elements.
+There are three main implementations of Set interface: HashSet, TreeSet, and LinkedHashSet
+
+HASHSET:
+---------
+
+This class implements the Set interface, backed by a hash table.
+
+HashSet doesn't maintain any order, the elements would be returned in any random order.
+HashSet doesn't allow duplicates. If you try to add a duplicate element in HashSet, the old value would be overwritten.
+HashSet allows null values however if you insert more than one nulls it would still return only one null value.
+HashSet is non-synchronized.
+The iterator returned by this class is fail-fast which means iterator would throw ConcurrentModificationException if HashSet has been modified
+after creation of iterator, by any means except iterator's own remove method.
+
+HashSet<String> hset = new HashSet<String>();
+hset.add("Apple");
+
+LINKEDHASHSET:
+-----------------
+
+LinkedHashSet is also an implementation of Set interface, it is similar to the HashSet and TreeSet except the below mentioned differences:
+
+  - HashSet doesn�t maintain any kind of order of its elements.
+  - TreeSet sorts the elements in ascending order.
+  - LinkedHashSet maintains the insertion order. Elements gets sorted in the same sequence in which they have been added to the Set.
+
+LinkedHashSet<String> lhset = new LinkedHashSet<String>();
+
+TREESET:
+-----------
+
+TreeSet is similar to HashSet except that it sorts the elements in the ascending order while HashSet doesn't maintain any order.
+
+TreeSet<String> tset = new TreeSet<String>();
+
+1) HashSet gives better performance (faster) than TreeSet for the operations like add, remove, contains, size etc.
+   HashSet offers constant time cost while TreeSet offers log(n) time cost for such operations.
+2) HashSet does not maintain any order of elements while TreeSet elements are sorted in ascending order by default.
+
+3) If you want a sorted Set then it is better to add elements to HashSet and then convert it into TreeSet rather than creating a TreeSet and adding elements to it.
+
+====================================================================================================================================================
+====================================================================================================================================================
+
+MAP:
+=========
+
+A Map is an object that maps keys to values. A map cannot contain duplicate keys.
+There are three main implementations of Map interfaces: HashMap, TreeMap, and LinkedHashMap.
+
+HashMap: it makes no guarantees concerning the order of iteration
+TreeMap: It stores its elements in a red-black tree, orders its elements based on their values; it is substantially slower than HashMap.
+LinkedHashMap: It orders its elements based on the order in which they were inserted into the set (insertion-order).
+
+HashMap<Integer,String> hm=new HashMap<Integer,String>();
+hm.put(100,"Amit");
+hm.put(101,"vijay");
+
+Iterator it=hm.entrySet().iterator();
+
+while(it.hasNext())
+{
+  Map.Entry pair = (Map.Entry)it.next();
+  System.out.println(pair.getKey() + pair.getValue());
+}
+
+
+====================================================================================================================================================
+====================================================================================================================================================
+
+
+QUEUE:
+=======
+
+Priority Queue:
+----------------
+- Inherits Queue interface.
+- priority associated with each element.
+- high priority element is served before a low priority element.

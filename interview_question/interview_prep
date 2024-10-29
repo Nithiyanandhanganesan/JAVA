@@ -1,0 +1,51 @@
+ What is JVM?
+ Explain different data types in Java.
+    - Primitive Data Type
+    - Non-Primitive Data Type or Object Data type
+  Differentiate between instance and local variables.
+  Why String is immutable?
+  What is a static variable?
+  What is difference between static method and static block?
+  Difference between static methods, static variables, and static classes in java.
+  What is the difference between string, string builder , string buffer?
+  String is mutable or immutable?
+  What is Object?
+  What is contructor?
+  What is default contructor ? default contructor vs parameterized constructor ? how to invoke that?
+  What is Interface?
+  What is market interface?
+  What is Abstract class?
+  Difference between abstract class and interface?
+  What is inheritance ? types of inheritance?
+  what is polymorphism?
+  Difference between method overloading and method overriding?
+  Can we override the private methods?
+  What is Collection Framework in Java?
+  What is list interface(Arraylist, linkedlist/ vector) / Set Interface(hashset, treeset) /  Queue Interface / Map Interface(hashmap, treemap)
+  how to iterate list/set/map?
+  Array vs ArrayList
+  Difference between Collection and Collections
+  What is enumerator?
+  difference between Comparable and Comparator
+  What is Exception Handling?
+  types of exceptions can occur in a Java program
+  hierarchy of Java Exception classes.
+  Explain Runtime Exceptions.
+  difference between Checked Exception and Unchecked Exception?
+  What is the base class for Error and Exception?
+  what is try / catch / finally block does?
+  What is the use of the final keyword?
+  What purpose do the keywords final, finally, and finalize fulfill
+  difference between this() and super() in Java
+  what is garback collection?
+  what is Java design pattern? learn any two design pattern (builder pattern, factory pattern)
+  what is statement and prepared statement?
+  what is final class
+  what is singleton class
+  difference between equals() method and equality operator (==) in Java?
+
+
+
+
+
+

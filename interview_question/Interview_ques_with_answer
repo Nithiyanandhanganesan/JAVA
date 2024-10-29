@@ -1,0 +1,65 @@
+1. What is JIT compiler in java?
+  - java source code --> JDK --> byte code --> JRE(Intepreter + JIT compiler) --> Machine codes
+  - here intepreter job is to convert byte code. It take more time to convert.
+  - So, JIT is introduced for optimization.
+
+2. What is marker Interface?
+  - Interface having no data member and member functions.
+  - Empty interface is called as Marker interface.
+  - Eg: Serializable , Cloneable.
+     public interface TestInterface {
+     }
+  - Then why this empty inteface is needed?
+     - its just tells compiler on metadata.
+
+3. Can you override private or static method in JAVA?
+  - You cannot override a private or static method.
+  - You cannot override a private method in sub class becaz its not accessible.
+    But you can create another private method with the same name in child class.
+  - For static method, if you create a similar method with same return type and same method argument
+    in the child class, then it will hide the superclass method, this is known as method hiding.
+
+
+4. What method does Object class have?
+  - Object class is parent of all classes in JAVA
+  - protected Object clone() -> create and returns a copy of this object.
+  - public boolean equals(Object obj) -> indicates whether some other object is "equal to" this one.
+  - protected void finalize() -> called by garbage collector when garbagecollection determines that
+    there are no more references to this object.
+  - public final Class getClass() - return runtime class of an object.
+  - public int hashCode() - return hash code value of an object.
+  - public String toString()
+  - public final void notify()
+  - public final void notifyAll()
+  - public final void wait()
+
+5. How can you make class Immutable?
+  - Declare the class as final, so it cant be extended.
+  - Make all fields as private, so that direct access is not allowed.
+  - Dont provide setter method for variables.
+  - Make all mutable fields final, so that its value can be assigned only once.
+  - Initialize all the fields via a constructor performing a deep copy.
+  - Perform cloning of objects in the getter method to return copy rather than returning the actual
+    object reference.
+
+6. What is singleton class in java and how can we make class singleton?
+  - Only one instance can be created at any given time, in one JVM.
+  - Create constructor as private .
+  - Eg:
+   public class SingletonExample {
+
+       //crete static instance
+       private static SingletonExample single_instance = null;
+
+       //create private constructor.
+       private SingletonExample(){
+       }
+
+       //this block will make sure only one instance is created.
+       public static SingletonExample getInstance() {
+           if(single_instance == null)
+               single_instance = new SingletonExample();
+
+           return single_instance
+       }
+   }
